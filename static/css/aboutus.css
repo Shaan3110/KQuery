@@ -1,0 +1,31 @@
+body
+{
+    background-color:rgb(182, 0, 91);
+}
+.container
+{
+    width: 100vw !important;
+    height: 100vh !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* border: 2px solid black; */
+}
+.container form
+{
+    width: 50vw;
+    height: 70vh;
+    border: 2px solid white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: white;
+    opacity: 0.9;
+    border: 8px solid black;
+    border-radius: 30px;
+}
+.container p
+{
+    max-width: 40vw;
+}
