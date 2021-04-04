@@ -46,18 +46,8 @@ def add_question():
         ele=Questions(title=t,ques=q)
         db.session.add(ele)
         db.session.commit()
-        return redirect('/')
-    return render_template('add-question.html')
-@app.route('/questions/answer',methods=['GET','POST'])
-def answered():
-    if request.method=='POST':
-        a=request.form['ans']
-        ele=Questions(ans=ans)
-        db.session.add(ele)
-        db.session.commit()
         return redirect('/questions')
-    allquestions=Questions.query.all()
-    return render_template('questions.html')
+    return render_template('add-question.html')
 @app.route('/login' ,methods=['GET','POST'])
 def login():
     if request.method=='POST':
@@ -82,6 +72,20 @@ def aboutus():
 @app.route('/contactus')
 def contactus():
     return render_template('contactus.html')
+@app.route('/questions')
+def questions():
+    allquestions=Questions.query.all()
+    return render_template('questions.html',allquestions=allquestions)
+@app.route('/questions/<int:sno>' ,methods=['GET','POST'])
+def question_answer(sno):
+    if request.method=='POST':
+        m=Questions.query.filter_by(sno=sno).first()
+        a=request.form['ans']
+        m.ans=a
+        db.session.add(m)
+        db.session.commit()
+        return redirect('/questions')
+    return render_template('questions.html')
 @app.route('/add-post',methods=['GET','POST'])
 def post_add():
     if request.method=='POST':

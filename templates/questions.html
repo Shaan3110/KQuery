@@ -5,26 +5,60 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>KQuest</title>
-    <!-- CSS only -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
-    <!-- JavaScript Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/questions.css') }}">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400&display=swap" rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-    <form>
-        <div class="mb-3">
-          <label for="exampleInputEmail1" class="form-label">Title</label>
-            <textarea name="title" id="" cols="30" rows="10"></textarea>
+    <div class="navigation__box">
+        <div class="navigation whitetxt">
+          <div class="navigation__logo bold large"><a href="/" style="color: white; text-decoration: none;">KQuest</a></div>
+            <div class="navigation__options small">
+                <a href="/aboutus" class="navigation__option">About Us</a>
+                <a href="/questions" class="navigation__option">Questions</a>
+                <a href="/contactus" class="navigation__option">Contact Us</a>
+                <a href="/login" class="navigation__option navigation__login">Login</a>
+            </div>
+            </div>
         </div>
-        <div class="mb-3">
-          <label for="exampleInputPassword1" class="form-label">Password</label>
-          <input type="password" class="form-control" id="exampleInputPassword1">
+    </div>
+    <div class="extraspc"></div>
+    <div class="blog__box">
+        <div class="blog container-fluid">
+            <div class="row centerchild">
+                <div class="col-sm-8 mainsection p-2">
+                    <span class="large"><a href="/add-question" class="addpost">+</a></span>
+                    <div class="question">
+                        <!-- <div class="postline1 small">Shouvik Chatterjee &nbsp;&nbsp;21:21 03-04-2021</div> -->
+                        {% for question in allquestions %}
+                        <div class="questionline1 med bold">{{question.title}}</div>
+                        <div class="questionline2 small bold">{{question.ques}}</div>
+                        <form action="/questions/{{question.sno}}" method="POST">
+                            <textarea id="" cols="70" rows="1" class="small questionline3" placeholder="{{question.ans}}" name="ans"></textarea><br>
+                            <button type="submit" class="btn btn-primary questionline4">Answer</button>
+                        </form>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="col-sm-3 sideoptions">
+                    <br>
+                    <img src="https://source.unsplash.com/random" alt="" style="height:200px; width:200px; border-radius: 50%;">
+                    <br>
+                    <div class="name whitetxt small">Shouvik Chatterjee</div>
+                    <br>
+                    <div class="sideoptionsbar">
+                        <a href="" class="btn btn-primary sidenav__option">Profile</a>
+                        <a href="" class="btn btn-primary sidenav__option">Settings</a>
+                        <a href="" class="btn btn-dark sidenav__option">Logout</a>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="mb-3 form-check">
-          <input type="checkbox" class="form-check-input" id="exampleCheck1">
-          <label class="form-check-label" for="exampleCheck1">Check me out</label>
-        </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
-      </form>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
 </body>
 </html>

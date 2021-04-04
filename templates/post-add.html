@@ -19,27 +19,31 @@
     <div class="navigation whitetxt">
         <div class="navigation__logo bold large"><a href="/" style="color: white; text-decoration: none;">KQuest</a></div>
         <div class="navigation__options small">
-            <a href="" class="navigation__option">About Us</a>
-            <a href="" class="navigation__option">Questions</a>
-            <a href="" class="navigation__option">Contact Us</a>
+            <a href="/aboutus" class="navigation__option">About Us</a>
+            <a href="/questions" class="navigation__option">Questions</a>
+            <a href="/contactus" class="navigation__option">Contact Us</a>
         </div>
         </div>
     </div>
   </div>
-  <form action="/add-post" method="POST">
-    <div class="mb-3">
-      <label for="exampleInputEmail1" class="form-label">Title</label>
-      <input type="text" class="form-control" name="title">
-    </div>
-    <div class="mb-3">
-      <label for="exampleInputEmail1" class="form-label">Name</label>
-      <input type="text" class="form-control" name="name">
-    </div>
-    <div class="mb-3">
-      <label for="exampleInputPassword1" class="form-label">Content</label>
-      <textarea name="content" id="content-post-add" cols="30" rows="10"></textarea>
-    </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
-  </form>
+  <div class="container">
+    <form action="/add-post" method="POST">
+        <div class="header" style="width: inherit;display: flex; align-items: center; justify-content: center;font-weight: bold;">
+            Add Post
+        </div>
+        <div class="mb-3">
+          <input type="text" class="form-control" placeholder="Name" name="">
+        </div>
+        <div class="mb-3">
+          <input type="text" class="form-control" placeholder="Title" name="title">
+        </div>
+        <div class="mb-3">
+            <textarea cols="30" rows="10" placeholder="Type your question" class="form-control" name="ques"></textarea>
+          </div>
+        <div class="submission" style="width: inherit; display: flex; align-items: center; justify-content: center;">
+            <button type="submit" class="btn btn-outline-dark">Submit</button>
+        </div>
+      </form>
+  </div>
 </body>
 </html>
